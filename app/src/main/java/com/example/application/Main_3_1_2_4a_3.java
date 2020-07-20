@@ -45,6 +45,21 @@ public class Main_3_1_2_4a_3 extends AppCompatActivity {
         add_button = findViewById(R.id.add_button);
         empty_imageview = findViewById(R.id.empty_imageview);
         no_data = findViewById(R.id.no_data);
+        chart_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent=getIntent();
+                Bundle bundle = myIntent.getExtras();
+                String startDate = bundle.getString("startDate");
+                String endDate = bundle.getString("endtDate");
+                Intent intent = new Intent(Main_3_1_2_4a_3.this, Main_3_2_1.class);
+                Bundle myBundle = new Bundle();
+                myBundle.putString("startDate",startDate);
+                myBundle.putString("endtDate",endDate);
+                intent.putExtras(myBundle);
+                startActivity(intent);
+            }
+        });
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,13 +67,6 @@ public class Main_3_1_2_4a_3 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        chart_view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Main_3_1_2_4a_3.this, Main_3_2_2.class);
-//                startActivity(intent);
-//            }
-//        });
         myDB = new MyDBHelper(Main_3_1_2_4a_3.this);
         book_id = new ArrayList<>();
         book_date = new ArrayList<>();
